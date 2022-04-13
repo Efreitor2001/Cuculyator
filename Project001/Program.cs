@@ -43,12 +43,11 @@ while (true)
         }
     double x = Num1;
     double y = Num2;
-    double a = 0;
-    if (act == "+") a = (x + y);
-    if (act == "-") a = (x - y);
-    if (act == "*") a = (x * y);
-    if (act == "/") a = (x / y);
-    double result = a;
+    double result = 0;
+    if (act == "+") result = (x + y);
+    if (act == "-") result = (x - y);
+    if (act == "*") result = (x * y);
+    if (act == "/") result = (x / y);
     if (act == "/" & y == 0)
     {
         Console.WriteLine("На 0 делить нельзя!");
