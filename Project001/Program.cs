@@ -1,8 +1,10 @@
 ﻿Console.ForegroundColor = ConsoleColor.Green;
 do
 {
-    Console.WriteLine("Вас приветсвует кукулятор...");
-    Console.WriteLine("Введите первое число:");
+    Console.WriteLine("\n-----------------------------");
+    Console.WriteLine("Вас приветсвует кукулятор");
+    Console.WriteLine("-----------------------------\n");
+    Console.Write("Введите первое число: ");
     var num = Console.ReadLine();
     double Num;
     bool isNum()
@@ -13,13 +15,29 @@ do
     while (isNum() == false)
     {
         Console.ForegroundColor = ConsoleColor.Red;
-        Console.WriteLine("Ошибка, введите корректные данные...");
+        Console.WriteLine("\nОшибка, введите корректные данные...\n");
         Console.ForegroundColor = ConsoleColor.Green;
+        Console.Write("Введите первое число: ");
         num = Console.ReadLine();
     }
     double x = Num;
-    Console.WriteLine("Введите действие (+, -, *, / или ^): ");
+    Console.Write("\nВведите действие: ");
     var act = Console.ReadLine();
+    void Help()
+    {
+        Console.WriteLine("\n---------------------------");
+        Console.WriteLine("Список доступных действий");
+        Console.WriteLine("---------------------------");
+        Console.WriteLine("+ - сложение");
+        Console.WriteLine("- - вычитание");
+        Console.WriteLine("* - умножение");
+        Console.WriteLine("/ - деление");
+        Console.WriteLine("^ - возвести число в степень");
+        Console.WriteLine("% - найти остаток от деления на второе число");
+        Console.WriteLine("-----------------------------------------------\n");
+        Console.Write("Введите действие: ");
+        act = Console.ReadLine();
+    }
     bool Act()
     {
         switch (act)
@@ -34,24 +52,36 @@ do
                 return true;
             case "^":
                 return true;
+            case "%":
+                return true;
             default:
                 return false;
         }
     }
     while (Act() == false)
     {
-        Console.ForegroundColor = ConsoleColor.Red;
-        Console.WriteLine("Ошибка, введите корректное действие...");
-        Console.ForegroundColor = ConsoleColor.Green;
-        act = Console.ReadLine();
+        if (act == "/help")
+        {
+            Help();
+        }
+        else
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("\nОшибка, введите корректное действие...");
+            Console.WriteLine("Чтобы получить список доступных действий введите /help\n");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("Введите действие: ");
+            act = Console.ReadLine();
+        }
     }
-    Console.WriteLine("Введите второе число:");
+    Console.Write("\nВведите второе число: ");
     num = Console.ReadLine();
     while (isNum() == false)
     {
         Console.ForegroundColor = ConsoleColor.Red;
-        Console.WriteLine("Ошибка, введите корректные данные...");
+        Console.WriteLine("\nОшибка, введите корректные данные...\n");
         Console.ForegroundColor = ConsoleColor.Green;
+        Console.Write("Введите второе число: ");
         num = Console.ReadLine();
     }
     double y = Num;
@@ -67,11 +97,14 @@ do
         case "*":
             result = x * y;
             break;
-        case "/":
+        case "/":Math.Pow(x, y);
             result = x / y;
             break;
         case "^":
             result = Math.Pow(x, y);
+            break;
+        case "%":
+            result = x % y;
             break;
         default:
             result = 0;
@@ -80,13 +113,15 @@ do
     if (act == "/" & y == 0)
     {
         Console.ForegroundColor = ConsoleColor.Red;
-        Console.WriteLine("На 0 делить нельзя!");
+        Console.WriteLine("\nНа 0 делить нельзя!\n");
     }
     else
     {
         Console.ForegroundColor = ConsoleColor.Blue;
-        Console.WriteLine("Ответ:");
-        Console.WriteLine(x + " " + act + " " + y + " = " + result);
+        Console.WriteLine("\n---------------------------------------------");
+        Console.Write("Ответ: ");
+        Console.Write(x + " " + act + " " + y + " = " + result);
+        Console.WriteLine("\n---------------------------------------------\n");
     }
     Console.ForegroundColor = ConsoleColor.White;
     Console.WriteLine("Нажмите любую клавишу чтобы продолжить...");
